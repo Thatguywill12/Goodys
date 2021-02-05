@@ -8,50 +8,51 @@ const useStyles = makeStyles((theme) => ({
     homeBodyRoot: {
         flexGrow: 1,
     },
-    homeBodyPaperTop: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+    homeBodyContainer: {
         display: 'flex',
-        flexDirection: 'row'
+        justifyContent: 'center',
+        width: "100%"
     },
     homeWelcomeContent: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
         position: 'absolute',
-        top: '40%',
-        left: '35%'
-    },
-    homeBodyPaperContent: {
-        margin: '10%'
+        top: '35%',
+        ['@media (max-width:600px)']: { 
+            top: '10%'
+        }
     },
     homeWelcomeImg: {
-        width: '100%'
-    }
+        width: '100%',
+        height: '719px',
+        ['@media (max-width:600px)']: { 
+            height: '100%'
+        }
+    },
+    homeSearch: {
+        width: '317px',
+        height: '43px',
+        borderRadius: '20px',
+        border: 'none',
+        outline: 'none',
+        fontSize: '18px',
+        paddingLeft: '10px',
+    },
 }));
 
 function HomeWelcome() {
     const classes = useStyles();
     return (
         <div>
-            <Grid container spacing={3} className={classes.homeBodyRoot}>
-                <Grid item xs={12} >
-                <img className={classes.homeWelcomeImg} src="https://weedseedshop.com/blog/wp-content/uploads/Does-Cannabis-Make-You-More-Creative-WeedSeedShop.jpg"/>
+            <Grid container className={classes.homeBodyRoot}>
+                <Grid item className={classes.homeBodyContainer}>
+                    <img className={classes.homeWelcomeImg} src="assets/img/home-background.jpeg"/>
 
                     <div className={classes.homeWelcomeContent}>
-                        <form  className="welcome-img-input" action="">
-                            <input type="text" placeholder="...Where should we deliver to?" size="35"/>
-                            <Button
-                            variant="outlined" 
-                            className="address__InputBtn"
-                            size="small"
-                            style={{backgroundColor:'black', color:'white'}}
-                            >
-                                Find Dispensary
-                            </Button>
-                        </form>
+                        <input className={classes.homeSearch} type="text" placeholder="...Where should we deliver to?" size="35"/>
                     </div>
+
                 </Grid>
             </Grid>
         </div>
