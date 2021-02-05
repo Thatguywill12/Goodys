@@ -8,13 +8,19 @@ import {Button} from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
     homeBodyRoot: {
         flexGrow: 1,
+        background: '#F9F8F3'
     },
     homeBodyPaperTop: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        border: 'none',
+        background: '#F9F8F3',
+        ['@media (max-width:600px)']: { 
+            flexDirection: 'column',
+        }
     },
     homeBodyPaperBottom: {
         padding: theme.spacing(2),
@@ -22,13 +28,33 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.text.secondary,
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        border: 'none',
+        background: '#F9F8F3',
+        ['@media (max-width:600px)']: { 
+            flexDirection: 'column-reverse',
+        }
     },
     homeBodyPaperContent: {
-        margin: '10%'
+        marginLeft: '60px',
+        marginRight: '60px',
+        marginTop: '10%'
     },
     homeBodyImg: {
-        width: '50%'
+        width: '70%',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+        }
+    },
+    button: {
+        backgroundColor:'black', 
+        color:'white',
+        borderRadius: '20px',
+        margin: '8%',
+        paddingLeft: '15px',
+        paddingRight: '15px',
+        paddingTop: '5px',
+        paddingBottom: '5px'
     }
 }));
 
@@ -36,19 +62,19 @@ function HomeBody() {
     const classes = useStyles();
     return (
         <div className={classes.homeBodyRoot}>
-          <Grid container spacing={3}>
+          <Grid container>
             <Grid item xs={12}>
               <Paper variant ="outlined"  elevation = {3} className={classes.homeBodyPaperTop}>
-              <img className = {classes.homeBodyImg} src="https://weedmaps.com/news/wp-content/uploads/2020/07/CRTV-3502_Strains-Articles-Arousal_015_16x9-3-2.jpg"/>
+                <img className = {classes.homeBodyImg} src="assets/img/pick-any.jpeg"/>
                 <div className={classes.homeBodyPaperContent}>
                     <h1>Pick Anything You Want</h1>            
                     <p>From your neighborhood dispensary to the medical dispensary choose from <br/>over thousands of local and national favorites across the U.S.</p>
                     <Button 
                     variant="outlined" 
-                    style= {{backgroundColor:'black', color:'white'}}
+                    className={classes.button}
                     size='small'
                     >
-                        Find Dispensary
+                        Find Products
                     </Button>
                 </div>
               </Paper>
@@ -60,13 +86,13 @@ function HomeBody() {
                     <p>Cannabis is more than just the flower. Topicals are increasingly gaining popularity. <br/> A variety of CBD-infused creams, balms and salves are widely available today, <br/>even in some everyday drug stores</p>
                     <Button 
                         variant="outlined" 
-                        style= {{backgroundColor:'black', color:'white'}}
+                        className={classes.button}
                         size='small'
                     >
-                        Find Dispensary
+                        Discover More
                     </Button>
                 </div>
-                    <img className = {classes.homeBodyImg} src="https://thefreshtoast.com/wp-content/uploads/2019/11/could-cbd-and-cannabis-eliminate-the-high-cost-and-high-stakes-of-current-psoriasis-medicines-1024x614.jpg"/>
+                <img className = {classes.homeBodyImg} src="assets/img/pick-more.jpeg"/>
               </Paper>
             </Grid>
           </Grid>

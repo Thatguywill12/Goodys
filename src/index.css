@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.slick-prev:before, .slick-next:before {
+  color: black !important;
+  font-size: 35px !important;
+}
+
+.slick-slide>div>div {
+  display: flex !important;
+  justify-content: center;
+}

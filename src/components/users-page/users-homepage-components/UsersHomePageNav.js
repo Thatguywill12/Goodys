@@ -19,72 +19,86 @@ import {Link} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
-    root:{
-        backgroundColor: 'black'
+  root:{
+    backgroundColor: 'white',
+    color: 'black',
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  filter: {
+    flexGrow: 1,
+    textAlign: 'left',
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  search: {
+    position: 'relative',
+    borderRadius: '20px',
+    backgroundColor: 'black',
     
-      },
-    grow: {
-      flexGrow: 1,
+    color: 'white',
+    '&:hover': {
+      backgroundColor: 'black',
     },
-    menuButton: {
-      marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
     },
-    title: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '11ch',
     },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
-      },
-      marginRight: theme.spacing(2),
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-      },
-    },
-    searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
+  },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-      },
-    },
-    sectionDesktop: {
+  },
+  shopCart: {
+    width: '30px',
+  },
+  shoppingCount: {
+    border: 'none',
+    fontSize: '20px',
+    width: '40px',
+  },
+  sectionMobile: {
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
       display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
     },
-    sectionMobile: {
-      display: 'flex',
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
-    },
-  }));
+  },
+}));
   
 
 function UsersHomePageNav() {
@@ -169,67 +183,81 @@ function UsersHomePageNav() {
 
 
     return (
-        <div className={classes.grow}>
-      <AppBar position="static" className={classes.root}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Goodys
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <Link to='/users-home-page'>
-              <Button variant='outlined' style={{color:"white", borderColor:"white"}}>
-                Sign In
-              </Button>
-            </Link>
-          </div>
-          <div className={classes.sectionMobile}>
+      <div className={classes.grow}>
+        <AppBar position="static" className={classes.root}>
+          <Toolbar>
             <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              edge="start"
+              className={classes.menuButton}
               color="inherit"
+              aria-label="open drawer"
             >
-              <MoreIcon />
+              <MenuIcon />
             </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-        </div>
+            <div className={classes.filter}>
+              Pick up | Delivery
+            </div>
+            <div className={classes.search}>
+              <InputBase
+                placeholder="Address"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'Address' }}
+              />
+            </div>
+            <div className={classes.grow} />
+            <Typography className={classes.title} variant="h6" noWrap>
+              Goodys
+            </Typography>
+            <div className={classes.grow} />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </div>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              {/*<IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={4} color="secondary">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton aria-label="show 17 new notifications" color="inherit">
+                <Badge badgeContent={17} color="secondary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>*/}
+              <Link to='/shopping-cart' style={{textDecoration: 'none', justifContent: 'center', display: 'flex', }}>
+                <img className={classes.shopCart}src='assets/img/shopping-cart.png' />
+                <input value="0" class={classes.shoppingCount} disabled='disabled'/>
+              </Link>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
     )
 }
 
