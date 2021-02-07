@@ -17,10 +17,19 @@ const useStyles = makeStyles((theme) => ({
     },
     productImg: {
         width: '600px',
+        height: '400px',
+        minWidth: '600px',
+        minHeight: '400px'
     },
     description: {
         padding: '50px',
-        width: '40%'
+        width: '40%',
+        textAlign: 'left'
+    },
+    seeAllBtn: {
+        padding: '10px',
+        border: 'none',
+        borderRadius: '5px'
     }
 }));
 
@@ -32,9 +41,9 @@ function UsersDealProducts() {
                 <div className={classes.description}>
                     <h2>Deals</h2>
                     <p>Every deal available all in one spot</p>
-                    <button>See all</button>
+                    <button className={classes.seeAllBtn}>See all</button>
                 </div>
-                <img className={classes.productImg} src='assets/img/product-deal.jpeg' />
+                <img className={classes.productImg} src='assets/img/product-deal.jpeg' alt='product-deal' />
             </div>
         </div>
     )

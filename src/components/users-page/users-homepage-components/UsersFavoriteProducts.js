@@ -15,10 +15,19 @@ const useStyles = makeStyles((theme) => ({
     },
     productImg: {
         width: '600px',
+        height: '400px',
+        minWidth: '600px',
+        minHeight: '400px'
     },
     description: {
         padding: '50px',
-        width: '40%'
+        width: '40%',
+        textAlign: 'left'
+    },
+    seeAllBtn: {
+        padding: '10px',
+        border: 'none',
+        borderRadius: '5px'
     }
 }));
 
@@ -31,9 +40,9 @@ function UsersFavoriteProducts() {
                     
                     <h2>People's Favorite</h2>
                     <p>Top products rated by you all</p>
-                    <button>See all</button>
+                    <button className={classes.seeAllBtn}>See all</button>
                 </div>
-                <img className={classes.productImg} src='assets/img/product-favorite.jpeg' />
+                <img className={classes.productImg} src='assets/img/product-favorite.jpeg' alt='product-favorite' />
             </div>
         </div>
     )
