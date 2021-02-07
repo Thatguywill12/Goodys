@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
     description: {
         width: "500px",
         fontSize: "20px",
-        fontWeight: "600"
+        fontWeight: "600",
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+        }
     }
 }));
 

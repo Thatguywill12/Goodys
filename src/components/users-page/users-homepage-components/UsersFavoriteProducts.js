@@ -11,23 +11,41 @@ const useStyles = makeStyles((theme) => ({
     favoriteProduct: {
         display: 'flex',
         width: '1000px',
-        padding: '5%'
+        padding: '5%',
+        ['@media (max-width:600px)']: { 
+            flexDirection: 'column',
+            width: '100%',
+            height: '100%'
+        }
     },
     productImg: {
         width: '600px',
         height: '400px',
         minWidth: '600px',
-        minHeight: '400px'
+        minHeight: '400px',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+            height: '100%',
+            minWidth: '100%',
+            minHeight: '100%',
+        }
     },
     description: {
         padding: '50px',
         width: '40%',
-        textAlign: 'left'
+        textAlign: 'left',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+            padding: '0px'
+        }
     },
     seeAllBtn: {
         padding: '10px',
         border: 'none',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        ['@media (max-width:600px)']: { 
+            marginBottom: '20px'
+        }
     }
 }));
 

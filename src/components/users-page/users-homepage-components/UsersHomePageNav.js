@@ -54,7 +54,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
       width: 'auto',
+      display: 'none'
     },
+    ['@media (max-width:600px)']: { 
+      display: 'none'
+    }
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -77,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '11ch',
     },
+    ['@media (max-width:600px)']: { 
+      paddingLeft: '5px',
+    }
   },
   sectionDesktop: {
     display: 'none',
