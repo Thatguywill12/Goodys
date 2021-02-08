@@ -12,7 +12,7 @@ function UsersHomePage() {
         <div>
             <UsersHomePageNav />
             <UsersHomePagePromo />
-            <UsersPopularProducts />
+            {/* <UsersPopularProducts /> */}
             <UsersDealProducts />
             <UsersFavoriteProducts />
             <UsersMeetBuddy />
