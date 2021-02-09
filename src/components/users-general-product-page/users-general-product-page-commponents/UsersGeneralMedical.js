@@ -44,25 +44,24 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         borderRadius: '8px'
     },
-    popularItemCard: {
-        height: '370px',
-        width: '280px',
-        textAlign: 'left'
-    },
-    popularItem: {
+    storeFrontItem: {
         display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
         height: '350px',
-        backgroundColor: 'red'
     },
-    popularItemContentContainer: {
+    storeFrontsContentContainer: {
         width: '60%',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-    media:{
+    popularItemCard: {
+        height: '370px',
+        maxWidth: 280,
+        textAlign: 'left'
+    },
+    storeFrontMedia:{
         height: 250,
         width: 250
     }
@@ -75,36 +74,37 @@ function mobileCheck() {
     return check;
 };
 
-function UsersGeneralProdBrands() {
+function UsersGeneralMedical() {
     const classes = useStyles();
     const pictures = [
-        {image1: 'https://images.weedmaps.com/brands/000/003/464/avatar/original/1541528123-1511815479-STIIIZY.p__1_.jpg?h=215&w=215&dpr=1&auto=format', title: 'STIIIZY'},
-        {image1: 'https://images.weedmaps.com/brands/000/002/735/avatar/original/1527890203-plugandplay_logo_v2.png?h=215&w=215&dpr=1&auto=format', title: 'PLUGPlay'},
-        {image1: 'https://images.weedmaps.com/brands/000/002/377/avatar/original/1604348131-Screen_Shot_2020-11-02_at_12.11.32_PM.png?h=215&w=215&dpr=1&auto=format', title: 'Crown Genetics'},
-        {image1: 'https://images.weedmaps.com/brands/000/001/079/avatar/original/1536878065-ROVE-LOGO.-----.jpg?h=215&w=215&dpr=1&auto=format', title: 'Rove'},
-        {image1: 'https://images.weedmaps.com/brands/000/004/667/avatar/original/1557421972-TLF_logo.png?h=215&w=215&dpr=1&auto=format', title: 'Tranquility Lane Farms'},
+        {imagel: 'https://images.weedmaps.com/dispensaries/000/000/783/avatar/original/1543872578-cana_logo_full.JPG?w=274&dpr=1&auto=format', title: 'Cana'},
+        {imagel: 'https://images.weedmaps.com/dispensaries/000/062/714/avatar/original/1576473265-THE_PLANT_BEST_GOLD_WEEDMAPS_R1-01.png?w=274&dpr=1&auto=format', title: 'The Plant'},
+        {imagel: 'https://images.weedmaps.com/dispensaries/000/062/761/avatar/original/1560907093-IMG_7451.jpeg?w=274&dpr=1&auto=format', title: 'Elevate'},
+        {imagel: 'https://images.weedmaps.com/dispensaries/000/001/453/avatar/original/1520664897-Black-Text-and-Gradient-Logo-square.png?w=274&dpr=1&auto=format', title: 'Divine Wellness Center'},
+        {imagel: 'https://images.weedmaps.com/dispensaries/000/042/360/avatar/original/1535233097-Shop___1_of_1_.jpg?w=274&dpr=1&auto=format', title: 'The Syndicate'},
     ];
     const settings = {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: mobileCheck()?1:4,
+        slidesToShow: mobileCheck()?2:4,
         slidesToScroll: 1
     };
     return (
         <div className={classes.slickContainer}>
-            <div className={classes.popularItemContentContainer}>
-                <h1 style={{marginBottom: '60px', marginTop: '40px'}}>Feature Brands</h1>
+            <div className={classes.storeFrontsContentContainer}>
+                <h1 style={{marginBottom: '60px', marginTop: '40px'}}>Medical</h1>
                 <Button variant="outlined" style={{height:'20%'}}>View All</Button>
             </div>
+            
             <Slider {...settings} className={classes.slick} >
                 {pictures.map(({ image1, title }) => (
                     <div>
                         <Card className={classes.popularItemCard}>
                             <CardContent>
                                 <CardMedia 
-                                    className={classes.media}
-                                    image = {image1}
+                                    className={classes.storeFrontMedia}
+                                    image = 'https://images.weedmaps.com/dispensaries/000/000/783/avatar/original/1543872578-cana_logo_full.JPG?w=274&dpr=1&auto=format'
                                 /> 
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {title}
@@ -127,4 +127,4 @@ function UsersGeneralProdBrands() {
     )
 }
       
-export default UsersGeneralProdBrands;
+export default UsersGeneralMedical;

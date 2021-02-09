@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
     img:{
         width: '70%',
-        height: '450px',
+        height: '550px',
         borderRadius: '10px'
     },
     uPaper:{

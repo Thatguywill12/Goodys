@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         marginTop: '50px',
         flexDirection: 'column',
-        // background: '#F4F3F3'
+        background: '#F4F3F3'
     },
     slick: {
         display: 'block',
@@ -30,12 +30,20 @@ const useStyles = makeStyles((theme) => ({
         }
     }, 
     popularProductImg: {
-        height: '300px',
-        width: '300px',
+        height: '250px',
+        width: '250px',
         display: 'flex',
         justifyContent:'center',
         position: 'absolute',
-        borderRadius: '8px'
+        borderRadius: '8px',
+        // ['@media (max-width:1400px)']: {
+        //     height: '150px',
+        //     width: '150px',    
+        // },
+        // ['@media (max-width:880px)']: {
+        //     height: '150px',
+        //     width: '180px',    
+        // }
     },
     popularItem: {
         display: 'flex',
@@ -55,11 +63,13 @@ function mobileCheck() {
 function UsersGeneralProdPopular() {
     const classes = useStyles();
     const pictures = [
-        {imagel: 'assets/img/p-p-1.jpeg', title: 'Concentrates'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/003/avatar/original/1607965267-CC-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Concentrates'},
         {imagel: 'assets/img/p-p2.jpeg', title: 'Flower'},
-        {imagel: 'assets/img/p-p3.jpeg', title: 'Edibles'},
-        {imagel: 'assets/img/p-p-1.jpeg', title: 'Concentrates'},
-        {imagel: 'assets/img/p-p2.jpeg', title: 'Flower'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/005/avatar/original/1607965274-ED-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Edibles'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/052/avatar/original/1607965592-CBD-v3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'CBD'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/023/avatar/original/1607965283-TP-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Topicals'},
+        {imagel: 'https://media.gq.com/photos/5aa6afaf1d388948225ce58c/1:1/w_1500,h_1500,c_limit/2018-03_GQ_weed-paraphernalia-best-stuff_16x9.jpg', title: 'Gear'},
+        {imagel: 'https://i.pinimg.com/564x/be/1b/17/be1b1733081d6ee75d94c2421d7a5c7b.jpg', title: 'Vape Pens'},
     ];
     const settings = {
         dots: false,

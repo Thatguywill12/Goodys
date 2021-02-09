@@ -10,8 +10,7 @@ const useStyles = makeStyles((theme) =>({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '30%'
-
+        marginBottom: '7%'
     },
     generalTopDeals:{
         backgroundImage: 'url("https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/crtv-3430_2020_design-language_cart_036-2.jpg")',

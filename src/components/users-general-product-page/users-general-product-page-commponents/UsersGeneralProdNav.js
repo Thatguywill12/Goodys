@@ -16,6 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Button} from "@material-ui/core";
 import {Link} from 'react-router-dom';
+import RoomIcon from '@material-ui/icons/Room';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,12 +42,13 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    borderRadius: '8px',
-    border: '1px solid black',
+    borderRadius: '4px',
+    border: '1px solid grey',
     backgroundColor: 'white',
     color: 'grey',
+    width: '10px',
     '&:hover': {
-      backgroundColor: 'black',
+      backgroundColor: '#fbfbfb',
     },
     marginRight: theme.spacing(8),
     marginLeft: 0,
@@ -70,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'black',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -79,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '11ch',
+      width: '100ch',
     },
     ['@media (max-width:600px)']: { 
       paddingLeft: '5px',
@@ -202,6 +204,9 @@ function  UsersGeneralProdNav() {
               <MenuIcon />
             </IconButton>
             <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <RoomIcon />
+              </div>
               <InputBase
                 placeholder="Address"
                 classes={{
