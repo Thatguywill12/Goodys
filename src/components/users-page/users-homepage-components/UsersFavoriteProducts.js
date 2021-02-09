@@ -2,6 +2,7 @@ import React from 'react'
 import {Button} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -58,7 +59,7 @@ function UsersFavoriteProducts() {
                     
                     <h2>People's Favorite</h2>
                     <p>Top products rated by you all</p>
-                    <button className={classes.seeAllBtn}>See all</button>
+                    <Link to="/users-general-product-page"><button className={classes.seeAllBtn}>See all</button></Link>
                 </div>
                 <img className={classes.productImg} src='assets/img/product-favorite.jpeg' alt='product-favorite' />
             </div>
