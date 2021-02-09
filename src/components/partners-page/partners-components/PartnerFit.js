@@ -1,12 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import {Button, ButtonBase} from "@material-ui/core";
-import InputBase from '@material-ui/core/InputBase';
 import LaptopImage from "../img/partner-ease.jpeg";
-import { callbackify } from 'util';
 
 const useStyles = makeStyles((theme) => ({
     container: {
