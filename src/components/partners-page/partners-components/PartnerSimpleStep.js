@@ -20,12 +20,21 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '100px',
         fontSize: '20px',
         color: 'white',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '45px',
+        }
     },
     signItem: {
         paddingTop: '10px',
         paddingLeft: '100px',
         paddingRight: '100px',
         minHeight: '300px',
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: '0px',
+            paddingLeft: '0px',
+            paddingRight: '0px',
+            minHeight: 'auto',
+        }
     },
     simpleImg: {
         width: '80%',
