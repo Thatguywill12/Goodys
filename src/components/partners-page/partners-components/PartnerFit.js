@@ -18,12 +18,23 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '100px',
         marginBottom: '100px',
         fontSize: '20px',
+        [theme.breakpoints.down('sm')]: {
+            textAlign: 'center',
+            paddingLeft: '0px',
+            marginBottom: '0px',
+        }
     },
     fitItem: {
         paddingTop: '10px',
         paddingLeft: '100px',
         paddingRight: '100px',
         minHeight: '300px',
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: '0px',
+            paddingLeft: '0px',
+            paddingRight: '0px',
+            minHeight: 'auto',
+        }
     },
     fitItemTitle: {
         fontSize: '25px',
@@ -54,7 +65,7 @@ function PartnerFit() {
                 <h1> Why partner with Goodys? </h1>
             </div>
             <Grid container className={classes.section}>
-                <Grid item xs={4} className={classes.fitItem}>
+                <Grid item sm={4} className={classes.fitItem}>
                     <Paper elevation={0} >
                         <h3 className={classes.fitItemTitle}> 
                             Deliver your way
@@ -64,7 +75,7 @@ function PartnerFit() {
                         </p>
                     </Paper>
                 </Grid>
-                <Grid item xs={4} className={classes.fitItem}>
+                <Grid item sm={4} className={classes.fitItem}>
                     <Paper elevation={0} >
                         <h3  className={classes.fitItemTitle}> 
                             Boost your visibility
@@ -74,7 +85,7 @@ function PartnerFit() {
                         </p>
                     </Paper>
                 </Grid>
-                <Grid item xs={4} className={classes.fitItem}>
+                <Grid item sm={4} className={classes.fitItem}>
                     <Paper elevation={0}>
                         <h3 className={classes.fitItemTitle}> 
                             Connect with customers
@@ -87,7 +98,7 @@ function PartnerFit() {
             </Grid>
             
             <Grid container className={classes.section}> 
-                <Grid item xs={4} className={classes.fitItem}>
+                <Grid item sm={4} className={classes.fitItem}>
                     <Paper elevation={0} >
                         <h3 className={classes.fitItemTitle}> 
                             Manage it all with ease
@@ -97,7 +108,7 @@ function PartnerFit() {
                         </p>
                     </Paper>
                 </Grid>
-                <Grid item xs={8}> 
+                <Grid item sm={8}> 
                     <img className={classes.partnerEaseImg} src={LaptopImage} />   
                 </Grid>
             </Grid>

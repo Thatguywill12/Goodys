@@ -87,7 +87,7 @@ function UsersGeneralMedical() {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: mobileCheck()?2:4,
+        slidesToShow: mobileCheck()?1:4,
         slidesToScroll: 1
     };
     return (
