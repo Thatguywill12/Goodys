@@ -121,9 +121,9 @@ const useStyles = makeStyles((theme) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
-    width: '100%',
+    width: '50%',
     [theme.breakpoints.up('md')]: {
-      width: '100ch',
+      width: '36ch',
     },
     ['@media (max-width:600px)']: { 
       paddingLeft: '5px',

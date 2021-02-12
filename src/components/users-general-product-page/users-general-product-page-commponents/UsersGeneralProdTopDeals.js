@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) =>({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '7%'
+        marginBottom: '7%',
     },
     generalTopDeals:{
         backgroundImage: 'url("https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/crtv-3430_2020_design-language_cart_036-2.jpg")',
@@ -23,17 +23,22 @@ const useStyles = makeStyles((theme) =>({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        ['@media (max-width:600px)']: {
+            marginTop: '10%', 
+            width: theme.spacing(210),
+            height: theme.spacing(35),
+            marginBottom: '30px',
+            borderRadius: '0'
+        }
     },
     generalTopDealsTitle:{
         marginLeft: '10%',
-        fontSize: '5rem'
-
+        fontSize:'2.11rem',
     },
     generalTopDealsButton:{
-        width: '8%',
+        width: '10%',
         marginLeft: '10%',
-
     }
 
 }))

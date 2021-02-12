@@ -11,45 +11,76 @@ const useStyles = makeStyles((theme) => ({
     homeBodyContainer: {
         display: 'flex',
         justifyContent: 'center',
-        width: "100%"
+        width: "100%",
     },
     slickContainer: {
         display: 'flex',
         alignItems: 'center',
         marginTop: '50px',
         flexDirection: 'column',
-        background: '#F4F3F3'
+        background: '#F4F3F3',
+        width: "100%",
+        ['@media (max-width:600px)']: { 
+            height: "400px"
+        }
     },
     slick: {
         display: 'block',
-        width: '65%',
+        width: '75%',
         marginBottom: '100px',
-        ['@media (max-width:600px)']: { 
-            width: '100%',
-            marginBottom: '30px'
-        }
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            width: '85%',
+            marginBottom: '30px',  
+        },
+        // ['@media (max-width:800px)']: { 
+        //     width: '100%',
+        //     marginBottom: '30px'
+        // }
     }, 
     popularProductImg: {
         height: '250px',
-        width: '250px',
+        width: '280px',
         display: 'flex',
         justifyContent:'center',
         position: 'absolute',
         borderRadius: '8px',
-        // ['@media (max-width:1400px)']: {
-        //     height: '150px',
-        //     width: '150px',    
-        // },
-        // ['@media (max-width:880px)']: {
-        //     height: '150px',
-        //     width: '180px',    
-        // }
+        ['@media (max-width:1500px)']: {
+            height: '220px',
+            width: '220px',   
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            height: '180px',
+            width: '5.3%',   
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            height: '50%',
+            width: '5%',   
+        },
+        ['@media (max-width:860px) and']: {
+            height: '150px',
+            width: '180px',     
+        }
     },
     popularItem: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '350px',
+    },
+    popularProductImgLabel:{
+        zIndex: 1, 
+        color: 'white', 
+        fontSize: '1.5rem', 
+        fontWeight:'600',
+        ['@media (max-width:1500px)']: {
+            fontSize: '1.7rem'
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            fontSize: '1.7rem'   
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            fontSize: '1.3rem'
+        },
     }
 
 }));
@@ -80,12 +111,12 @@ function UsersGeneralProdPopular() {
     };
     return (
         <div className={classes.slickContainer}>
-            <h1 style={{marginBottom: '60px', marginTop: '40px'}}>Popular Products</h1>
+            <h1 style={{marginBottom: '1%', marginTop: '40px', fontSize:'2.11rem'}}>Popular Products</h1>
             <Slider {...settings} className={classes.slick} >
                 {pictures.map(({ imagel, title }) => (
                     <div className={classes.popularItem}>
                         <img src={imagel} alt={title} className={classes.popularProductImg}/>
-                        <label style={{zIndex: 1, color: 'white', fontSize:'30px', fontWeight:'600'}}>{title}</label>
+                        <label className={classes.popularProductImgLabel}>{title}</label>
                     </div>
                 ))}
             </Slider>

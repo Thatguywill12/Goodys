@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     slick: {
         display: 'block',
-        width: '1000px',
+        width: '85%',
         marginBottom: '100px',
         ['@media (max-width:600px)']: { 
             width: '100%',
@@ -30,17 +30,49 @@ const useStyles = makeStyles((theme) => ({
         }
     }, 
     popularProductImg: {
-        height: '250px',
+        height: '200px',
         width: '250px',
         display: 'flex',
         justifyContent:'center',
         position: 'absolute',
+        borderRadius: '8px',
+        ['@media (max-width:1500px)']: {
+            height: '220px',
+            width: '220px',   
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            height: '180px',
+            width: '5.3%',   
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            height: '50%',
+            width: '5%',   
+        },
+        // ['@media (max-width:880px)']: {
+        //     height: '150px',
+        //     width: '180px',    
+        // }
     },
     popularItem: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '250px'
+    },
+    popularProductImgLabel:{
+        zIndex: 1, 
+        color: 'white', 
+        fontSize: '1.5rem', 
+        fontWeight:'600',
+        ['@media (max-width:1500px)']: {
+            fontSize: '1.7rem'
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            fontSize: '1.7rem'   
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            fontSize: '1.3rem'
+        },
     }
 
 }));
@@ -54,17 +86,19 @@ function mobileCheck() {
 function UsersPopularProducts() {
     const classes = useStyles();
     const pictures = [
-        {imagel: 'assets/img/p-p-1.jpeg', title: 'Concentrates'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/003/avatar/original/1607965267-CC-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Concentrates'},
         {imagel: 'assets/img/p-p2.jpeg', title: 'Flower'},
-        {imagel: 'assets/img/p-p3.jpeg', title: 'Edibles'},
-        {imagel: 'assets/img/p-p-1.jpeg', title: 'Concentrates'},
-        {imagel: 'assets/img/p-p2.jpeg', title: 'Flower'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/005/avatar/original/1607965274-ED-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Edibles'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/052/avatar/original/1607965592-CBD-v3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'CBD'},
+        {imagel: 'https://images.weedmaps.com/categories/000/000/023/avatar/original/1607965283-TP-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Topicals'},
+        {imagel: 'https://media.gq.com/photos/5aa6afaf1d388948225ce58c/1:1/w_1500,h_1500,c_limit/2018-03_GQ_weed-paraphernalia-best-stuff_16x9.jpg', title: 'Gear'},
+        {imagel: 'https://i.pinimg.com/564x/be/1b/17/be1b1733081d6ee75d94c2421d7a5c7b.jpg', title: 'Vape Pens'},
     ];
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: mobileCheck()?1:3,
+        slidesToShow: mobileCheck()?1:4,
         slidesToScroll: 1
     };
     return (
@@ -74,7 +108,7 @@ function UsersPopularProducts() {
                 {pictures.map(({ imagel, title }) => (
                     <div className={classes.popularItem}>
                         <img src={imagel} alt={title} className={classes.popularProductImg}/>
-                        <label style={{zIndex: 1, color: 'white', fontSize:'30px', fontWeight:'600'}}>{title}</label>
+                        <label className={classes.popularProductImgLabel}>{title}</label>
                     </div>
                 ))}
             </Slider>

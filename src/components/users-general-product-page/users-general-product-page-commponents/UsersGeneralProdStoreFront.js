@@ -15,11 +15,6 @@ const useStyles = makeStyles((theme) => ({
     userRoot: {
         flexGrow: 1,
     },
-    homeBodyContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: "100%"
-    },
     slickContainer: {
         display: 'flex',
         alignItems: 'center',
@@ -29,41 +24,146 @@ const useStyles = makeStyles((theme) => ({
     },
     slick: {
         display: 'block',
-        width: '65%',
+        width: '66%',
         marginBottom: '100px',
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            width: '80%',
+            marginBottom: '100px',
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            width: '85%',
+            marginBottom: '100px',
+        },
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+            marginBottom: '30px'
+        },
         ['@media (max-width:600px)']: { 
             width: '100%',
             marginBottom: '30px'
         }
-    }, 
-    popularProductImg: {
-        height: '300px',
-        width: '300px',
-        display: 'flex',
-        justifyContent:'center',
-        position: 'absolute',
-        borderRadius: '8px'
-    },
-    storeFrontItem: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '350px',
     },
     storeFrontsContentContainer: {
-        width: '60%',
+        width: '63.7%',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        fontSize:'0.8rem',
+        ['@media (max-width:1750px)']: {
+            fontSize:'0.6rem',
+            width: '65%',
+            fontSize:'0.6rem',  
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            width: '78%',
+            fontSize:'0.6rem', 
+        },
+        ['@media (max-width:1024px) and (max-height: 768px)']: {
+            width: '78%',
+            fontSize:'0.6rem', 
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            width: '84%',
+            fontSize:'0.6rem', 
+        },
+        ['@media (max-width:600px)']: { 
+            fontSize:'0.6rem',
+            width: '66%',
+            fontSize:'0.6rem',
+        },
+        ['@media (max-width:600px)']: { 
+            width: '66%',
+            fontSize:'0.6rem',
+        }
     },
     popularItemCard: {
         height: '370px',
-        maxWidth: 280,
-        textAlign: 'left'
+        width: '280px',
+        textAlign: 'left',
+        ['@media (min-width:1600px)']: { 
+            height: '330px',
+            width: 280,
+            textAlign: 'left',
+            margin: '10%'
+            
+        },
+        ['@media (max-width:1500px)']: {
+            height: '300px',
+            width: '100%',
+            textAlign: 'left',
+            margin: '4%'
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            height: '280px',
+            width: '100%',
+            textAlign: 'left',
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            height: '300px',
+            width: 300,
+            textAlign: 'left',
+            // margin: '10%'
+        },
+        ['@media (max-width:600px)']: { 
+            // height: '370px',
+            maxWidth: 250,
+            textAlign: 'left',
+            
+        }
     },
     storeFrontMedia:{
         height: 250,
-        width: 250
+        width: 250,
+        ['@media (min-width:1750px)']: {
+            marginLeft:'10%',
+            height: '200px',
+            maxWidth: 165,
+            textAlign: 'left',
+            
+        },
+        ['@media (max-width:1500px)']: {
+            height: '150px',
+            width: '100%',
+            marginLeft:'0%',
+            textAlign: 'left',
+            margin: '10%'
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            height: '150px',
+            width: '100%',
+            marginLeft:'0%',
+            textAlign: 'left',
+            margin: '10%' 
+        },
+        ['@media (max-width:600px)']: { 
+            height: '250px',
+            maxWidth: 230,
+            textAlign: 'left',
+            
+        },
+        ['@media (max-width:600px)']: { 
+            height: '250px',
+            maxWidth: 230,
+            textAlign: 'left',
+            
+        }
+    },
+    popularItemCardFonts:{
+        fontSize: '1.5rem',
+        ['@media (min-width:1750px)']: {
+            fontSize: '1.5rem',
+            
+        },
+        ['@media (max-width:1500px)']: {
+            fontSize: '1.5rem',
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            fontSize: '1.3rem',
+        },
+        ['@media (max-width:600px)']: { 
+            fontSize: '1.5rem',
+            
+        }
     }
 
 }));
@@ -106,7 +206,7 @@ function UsersGeneralProdStoreFronts() {
                                     className={classes.storeFrontMedia}
                                     image = 'https://images.weedmaps.com/dispensaries/000/000/783/avatar/original/1543872578-cana_logo_full.JPG?w=274&dpr=1&auto=format'
                                 /> 
-                                <Typography gutterBottom variant="h5" component="h2">
+                                <Typography className={classes.popularItemCardFonts} gutterBottom variant="h5" component="h2">
                                     {title}
                                 </Typography>
                                 <Typography>

@@ -7,12 +7,26 @@ import {Paper,Button} from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
     root:{
         textAlign: 'center',
-        marginTop: '3%'
+        marginTop: '4%',
+        fontSize: '1.5rem'
     },
     img:{
         width: '70%',
         height: '550px',
-        borderRadius: '10px'
+        borderRadius: '10px',
+        ['@media (max-width:1400px)']: {
+            height: '320px',
+            width: '75%',    
+        },
+        ['@media (max-width:1024px) and (max-height: 1366px)']: {
+            height: '250px',
+            width: '75%',      
+        },
+        ['@media (max-width:880px)']: {
+            height: '10%',
+            width: '100%', 
+            borderRadius:'0'   
+        }
     },
     uPaper:{
         alignText: 'center',

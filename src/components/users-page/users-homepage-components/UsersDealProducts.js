@@ -10,10 +10,12 @@ const useStyles = makeStyles((theme) => ({
     },
     dealProduct: {
         display: 'flex',
-        width: '1000px',
-        paddingTop: '5%',
-        paddingLeft: '5%',
-        paddingRight: '5%',
+        marginTop:'10%',
+        marginBottom:'10%',
+        // width: '1000px',
+        // paddingTop: '5%',
+        // paddingLeft: '5%',
+        // paddingRight: '5%',
         ['@media (max-width:600px)']: { 
             flexDirection: 'column',
             width: '100%',
@@ -25,6 +27,14 @@ const useStyles = makeStyles((theme) => ({
         height: '400px',
         minWidth: '600px',
         minHeight: '400px',
+        borderRadius: '6%',
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            width: '55%',
+            height: '100%',
+            minWidth: '30%',
+            minHeight: '100%',  
+            borderRadius: '6%'
+        },
         ['@media (max-width:600px)']: { 
             width: '100%',
             height: '100%',
@@ -36,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
         padding: '50px',
         width: '40%',
         textAlign: 'left',
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            padding: '15px',
+            width: '40%',
+            textAlign: 'left',  
+        },
         ['@media (max-width:600px)']: { 
             width: '100%',
             padding: '0px'
