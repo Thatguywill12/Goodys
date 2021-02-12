@@ -23,8 +23,12 @@ const useStyles = makeStyles((theme) => ({
   root:{
     backgroundColor: 'white',
     color: 'black',
+    position: 'fixed',
+    width: '100%',
+    left: '0px',
     // [theme.breakpoints.down('sm')]: {
     // }
+
   },
   grow: {
     flexGrow: 1,
@@ -121,9 +125,9 @@ const useStyles = makeStyles((theme) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
-    width: '50%',
+    width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '36ch',
+      width: '100ch',
     },
     ['@media (max-width:600px)']: { 
       paddingLeft: '5px',
@@ -152,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
 }));
   
 
-function  UsersProductPageNav() {
+function  RetailerPageNav() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -293,7 +297,7 @@ function  UsersProductPageNav() {
               </IconButton>*/}
               <Link to='/shopping-cart' style={{textDecoration: 'none', justifContent: 'center', display: 'flex', }}>
                 <img className={classes.shopCart}src='assets/img/shopping-cart.png' />
-                <input value="0" class={classes.shoppingCount} disabled='disabled'/>
+                <input value="0" className={classes.shoppingCount} disabled='disabled'/>
               </Link>
             </div>
             <div className={classes.sectionMobile}>
@@ -315,5 +319,5 @@ function  UsersProductPageNav() {
     )
 }
 
-export default UsersProductPageNav;
+export default RetailerPageNav;
 
