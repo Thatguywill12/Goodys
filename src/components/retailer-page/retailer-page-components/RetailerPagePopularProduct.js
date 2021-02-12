@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     categoryName: {
         fontSize: '31px',
         letterSpacing: '2px',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '20px',
+        }
     },
     title: {
         display: 'flex',
@@ -45,15 +48,13 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '30px',
     },
     showAllBtn: {
-        border: 'solid thin gray',
-        background: 'gray',
         padding: '10px',
-        color: 'white',
+        border: 'none',
         borderRadius: '5px',
-        fontSize: '17px',
-        fontWeight: 'bold',
-        width: '111px',
-        height: '47px'
+        background: '#d6d5d5',
+        ['@media (max-width:600px)']: { 
+            marginBottom: '20px'
+        }
     },
     productHolder: {
         [theme.breakpoints.down('sm')]: {
