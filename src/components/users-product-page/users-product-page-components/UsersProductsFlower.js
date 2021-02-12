@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '50px',
         flexDirection: 'column',
         // background: '#F4F3F3'
+        marginBottom: '-111px'
     },
     slick: {
         display: 'block',
