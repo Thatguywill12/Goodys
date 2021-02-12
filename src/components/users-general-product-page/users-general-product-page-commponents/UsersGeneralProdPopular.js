@@ -1,5 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import {Button} from "@material-ui/core";
+import {Link} from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -63,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
     },
     popularItem: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         height: '350px',
@@ -95,7 +98,7 @@ function UsersGeneralProdPopular() {
     const classes = useStyles();
     const pictures = [
         {imagel: 'https://images.weedmaps.com/categories/000/000/003/avatar/original/1607965267-CC-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Concentrates'},
-        {imagel: 'assets/img/p-p2.jpeg', title: 'Flower'},
+        {imagel: 'assets/img/p-p2.jpeg', title: 'Flower', path:'/users-product-page'},
         {imagel: 'https://images.weedmaps.com/categories/000/000/005/avatar/original/1607965274-ED-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Edibles'},
         {imagel: 'https://images.weedmaps.com/categories/000/000/052/avatar/original/1607965592-CBD-v3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'CBD'},
         {imagel: 'https://images.weedmaps.com/categories/000/000/023/avatar/original/1607965283-TP-V3.png?w=400&h=300&dpr=1&auto=format&fit=crop', title: 'Topicals'},
@@ -117,6 +120,12 @@ function UsersGeneralProdPopular() {
                     <div className={classes.popularItem}>
                         <img src={imagel} alt={title} className={classes.popularProductImg}/>
                         <label className={classes.popularProductImgLabel}>{title}</label>
+                        <Link to='/users-product-page' style={{textDecoration:'none'}}>
+                            <Button variant='outlined' style={{backgroundColor: 'white'}}>
+                                View More
+                            </Button>
+                        </Link>
+                      
                     </div>
                 ))}
             </Slider>
