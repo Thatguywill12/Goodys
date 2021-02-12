@@ -26,10 +26,20 @@ const useStyles = makeStyles((theme) => ({
         width: '250px',
         height: '200px',
         borderRadius: '10px',
-        [theme.breakpoints.down('sm')]: {
+        ['@media (max-width:1360px) and (max-height: 1024px)']: {
+            width: '95%',
+            marginBottom: '20px',
+        },
+        ['@media (max-width:768px) and (max-height: 1024px)']: {
+            width: '95%',
+            marginBottom: '20px',
+        },
+        ['@media (max-width:600px)']: { 
             height: '100%',
-            width: '100%'
+            width: '100%',
+            marginBottom: '20px'
         }
+        
     },
     categoryName: {
         fontSize: '31px',
