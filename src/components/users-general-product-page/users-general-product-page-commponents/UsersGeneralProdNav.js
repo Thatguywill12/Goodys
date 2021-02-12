@@ -293,7 +293,7 @@ function  UsersGeneralProdNav() {
               </IconButton>*/}
               <Link to='/shopping-cart' style={{textDecoration: 'none', justifContent: 'center', display: 'flex', }}>
                 <img className={classes.shopCart}src='assets/img/shopping-cart.png' />
-                <input value="0" class={classes.shoppingCount} disabled='disabled'/>
+                <input value="0" className={classes.shoppingCount} disabled='disabled'/>
               </Link>
             </div>
             <div className={classes.sectionMobile}>
