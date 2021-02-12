@@ -16,12 +16,19 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Button} from "@material-ui/core";
 import {Link} from 'react-router-dom';
+import RoomIcon from '@material-ui/icons/Room';
 
 
 const useStyles = makeStyles((theme) => ({
   root:{
     backgroundColor: 'white',
     color: 'black',
+    position: 'fixed',
+    width: '100%',
+    left: '0px',
+    // [theme.breakpoints.down('sm')]: {
+    // }
+
   },
   grow: {
     flexGrow: 1,
@@ -29,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   filter: {
     flexGrow: 1,
     textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    }
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -40,24 +50,58 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   search: {
-    position: 'relative',
-    borderRadius: '20px',
-    backgroundColor: 'black',
     
-    color: 'white',
+  },
+  keywordSearch: {
+    position: 'relative',
+    borderRadius: '4px',
+    border: '1px solid grey',
+    backgroundColor: 'white',
+    color: 'grey',
+    width: '10px',
     '&:hover': {
-      backgroundColor: 'black',
+      backgroundColor: '#fbfbfb',
     },
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(8),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-      display: 'none'
+      marginLeft: theme.spacing(8),
+      width: '20%',
     },
-    ['@media (max-width:600px)']: { 
-      display: 'none'
+    [theme.breakpoints.down('sm')]: {
+      position: 'absolute',
+      left: '70px',
+      width: '80px',
+      border: 'solid thin',
+      borderRadius: '10px',
+      paddingLeft: '15px',
+    }
+  },
+  addressSearch: {
+    position: 'relative',
+    borderRadius: '4px',
+    border: '1px solid grey',
+    backgroundColor: 'white',
+    color: 'grey',
+    width: '10px',
+    '&:hover': {
+      backgroundColor: '#fbfbfb',
+    },
+    marginRight: theme.spacing(8),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(8),
+      width: '20%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      position: 'absolute',
+      right: '10px',
+      width: '80px',
+      border: 'solid thin',
+      borderRadius: '10px',
+      paddingLeft: '15px',
     }
   },
   searchIcon: {
@@ -68,9 +112,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '0px',
+      marginLeft: '-15px',
+    }
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'black',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -79,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '11ch',
+      width: '100ch',
     },
     ['@media (max-width:600px)']: { 
       paddingLeft: '5px',
@@ -108,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
 }));
   
 
-function UsersHomePageNav() {
+function  RetailerPageNav() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -201,10 +249,10 @@ function UsersHomePageNav() {
             >
               <MenuIcon />
             </IconButton>
-            <div className={classes.filter}>
-              Pick up | Delivery
-            </div>
-            <div className={classes.search}>
+            <div className={classes.addressSearch}>
+              <div className={classes.searchIcon}>
+                <RoomIcon />
+              </div>
               <InputBase
                 placeholder="Address"
                 classes={{
@@ -214,12 +262,15 @@ function UsersHomePageNav() {
                 inputProps={{ 'aria-label': 'Address' }}
               />
             </div>
+            <div className={classes.filter}>
+              Pick up 
+            </div>
             <div className={classes.grow} />
             <Typography className={classes.title} variant="h6" noWrap>
               Goodys
             </Typography>
             <div className={classes.grow} />
-            <div className={classes.search}>
+            <div className={classes.keywordSearch}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -268,4 +319,5 @@ function UsersHomePageNav() {
     )
 }
 
-export default UsersHomePageNav
+export default RetailerPageNav;
+

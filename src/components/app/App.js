@@ -5,6 +5,7 @@ import PartnersPage from '../partners-page/PartnersPage';
 import UsersHomePage from '../users-page/UsersHomePage';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import UsersGeneralPage from '../users-general-product-page/UsersGeneralPage';
+import RetailerPage from '../retailer-page/RetailerPage';
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/drivers-page" component={DriversPage} />
-          <Route exact path="/partners-page" component={PartnersPage}/>
-          <Route exact path="/users-home-page" component={UsersHomePage}/ >
+          <Route exact path="/partners-page" component={PartnersPage} />
+          <Route exact path="/users-home-page" component={UsersHomePage} />
           <Route exact path="/users-general-product-page" component={UsersGeneralPage} />
+          <Route exact path="/retailer" component={RetailerPage} />
         </Switch>
       </div>
     </Router>
