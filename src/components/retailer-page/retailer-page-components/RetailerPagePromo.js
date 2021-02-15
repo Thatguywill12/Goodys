@@ -15,8 +15,12 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         marginTop: '80px',
         height: '100%',
-        marginLeft: '21%'
+        marginLeft: '21%',
         // backgroundColor: 'red',
+        [theme.breakpoints.down('sm')]: {
+            marginTop: '0px',
+            marginLeft: '0px',
+        }
     },
     homeWelcomeImg: {
         // marginTop: '50px',
@@ -29,7 +33,11 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     homeWelcomeInformation:{
-        marginLeft: '20%'
+        marginLeft: '20%',
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: '0px',
+            padding: '30px',
+        }
     },
     homeWelcomeDetails:{
         display: 'flex',
