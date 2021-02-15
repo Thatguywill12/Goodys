@@ -91,7 +91,7 @@ function RetailerPagePopularProduct() {
                 <div>
                     <div className={classes.title}>
                         <label className={classes.categoryName}>{category}</label>
-                        <ButtonBase className={classes.showAllBtn}>Show All</ButtonBase>
+                        <Button variant="outlined" style={{height:'20%'}}>View All</Button>
                     </div>
                     <Grid container className={classes.popularMain}>
                     {

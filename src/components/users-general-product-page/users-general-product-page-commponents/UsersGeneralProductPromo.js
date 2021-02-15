@@ -7,7 +7,7 @@ import {Paper,Button} from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
     root:{
         textAlign: 'center',
-        marginTop: '4%',
+        marginTop: '112px',
         fontSize: '1.5rem'
     },
     img:{
