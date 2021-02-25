@@ -7,6 +7,9 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import UsersGeneralPage from '../users-general-product-page/UsersGeneralPage';
 import RetailerPage from '../retailer-page/RetailerPage';
 import UsersProductPage from '../users-product-page/UsersProductPage';
+import SignIn from '../users-signUp-signIn-page/SignIn';
+import Cart from '../cart-page/Cart';
+// import SignUp from '../users-signUp-signIn-page/SignUp';
 
 function App() {
   return (
@@ -20,6 +23,10 @@ function App() {
           <Route exact path="/users-general-product-page" component={UsersGeneralPage} />
           <Route exact path="/users-product-page" component={UsersProductPage} />
           <Route exact path="/retailer" component={RetailerPage} />
+          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/cart" component={Cart} />
+          {/* <Route exact path= '/sign-up' component={SignUp} /> */}
+          
         </Switch>
       </div>
     </Router>

@@ -316,7 +316,7 @@ function  MenuNav() {
         {
             menuLinks.map(({menuHref, caption}) => (
                 <MenuItem onClick={handleMenuClose} className={classes.mainMenuItem}>
-                    <Link to={menuHref} style={{textDecoration: 'none',}}>
+                    <Link to={menuHref} style={{textDecoration: 'none', color:'black'}}>
                         {caption}
                     </Link>
                 </MenuItem>
@@ -375,19 +375,22 @@ function  MenuNav() {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              {/*<IconButton aria-label="show 4 new mails" color="inherit">
+              {/* <IconButton aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
                 </Badge>
-              </IconButton>
-              <IconButton aria-label="show 17 new notifications" color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>*/}
-              <Link to='/shopping-cart' style={{textDecoration: 'none', justifyContent: 'center', display: 'flex', }}>
-                <img className={classes.shopCart}src='assets/img/shopping-cart.png' />
-                <input value="0" className={classes.shoppingCount} disabled='disabled'/>
+              </IconButton> */}
+              <Link to='/sign-in'>
+                <Button aria-label="show 17 new notifications" size='small' variant="outlined" color="inherit" style={{height:'30px'}}>
+                    <h6>Sign In</h6>
+                </Button>
+              </Link>
+
+              <Link to='/cart' style={{textDecoration: 'none', justifyContent: 'center', display: 'flex', }}>
+                <Button>
+                    <img className={classes.shopCart}src='assets/img/shopping-cart.png' />
+                    <input value="0" className={classes.shoppingCount} disabled='disabled'/>
+                </Button>
               </Link>
             </div>
             <div className={classes.sectionMobile}>
