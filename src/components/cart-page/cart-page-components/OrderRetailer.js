@@ -24,6 +24,22 @@ const useStyles =  makeStyles((theme) => ({
         height: 150,
         borderRadius: 5,
         margin: 5
+    },
+    ul: {
+        display:'flex', 
+        flexDirection:'column', 
+        alignItems:'flex-start', 
+        listStyle:'none',
+        ['@media (max-width:600px)']: { 
+            paddingLeft: '10px',
+        }
+    },
+    li: {
+        minHeight: '40px',
+        textAlign: 'left',
+        ['@media (max-width:600px)']: { 
+            fontSize: '13px',
+        }
     }
 
 }))
@@ -34,13 +50,11 @@ function OrderRetailer() {
         <div>
             <Card className={classes.root}>
                 <img className={classes.img} src="https://images.weedmaps.com/dispensaries/000/062/761/avatar/square_fill/1560907093-IMG_7451.jpeg"/> 
-                <ul style={{display:'flex', flexDirection:'column', alignItems:'flex-start', listStyle:'none'}}>
-                    <li>Elevate</li>
-                    <li>Stars/Rating/(number of Reviews)</li>
-                    <li>Medical & Recreational * Delivery</li>
+                <ul className={classes.ul}>
+                    <li className={classes.li}>Elevate</li>
+                    <li className={classes.li}>Stars/Rating/(number of Reviews)</li>
+                    <li className={classes.li}>Medical & Recreational * Delivery</li>
                     <Button size='small' variant='outlined'>Open</Button>
-                    
-
                 </ul>
             </Card>
             

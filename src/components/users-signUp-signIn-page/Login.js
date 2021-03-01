@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import {makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
 import {Link} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 
 
@@ -47,15 +48,23 @@ const useStyles = makeStyles({
     }
 });
 
+
+
 const Login = (props) => {
     const classes = useStyles();
+    const history = useHistory();
+
+    const handleSignup = () => {
+        history.push('/');
+    }
+
     const {
         email,
         setEmail,
         password,
         setPassword,
         handleLogin,
-        handleSignup,
+        //handleSignup,
         hasAccount,
         setHasAccount,
         emailError,
@@ -215,15 +224,15 @@ const Login = (props) => {
                                 <Button variant="outlined" className={classes.oAuthBtn} startIcon={<FacebookIcon/>}>Sign Up With Facebook </Button>
                             </div>
                             <div className="btnContainer"></div> 
-                            <Link to ='/users-home-page'>
+                            {/*<Link to ='/users-home-page'>*/}
                                 <Button
                                     variant="outlined"
-                                    style={{ position: "relative", left: "81%" }}
+                                    style={{ position: "relative",}}
                                     onClick={handleSignup}
                                 >
                                     Sign up
                                 </Button>
-                            </Link>
+                            {/*</Link>*/}
                             <p>
                                 Already have an account?
                                 <span onClick={() => setHasAccount(!hasAccount)}>Sign in</span>
