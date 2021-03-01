@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+import { connect } from "react-redux";
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import {Link} from 'react-router-dom';
@@ -16,22 +18,31 @@ const useStyles =  makeStyles((theme) => ({
         flexShrink: 1,
         marginTop: 10,
         display:'flex',
-        alignItems:'flex-end',
+        alignItems:'flex-start',
+        flexDirection: 'column',
     },
     imgTitleContainer:{
         display: 'flex',
         flexDirection: 'column',
         alignItems:'flex-start',
         margin: 5,
-        width: '20%',
+        width: '150px',
         // backgroundColor: 'red',
-        fontSize: '1rem'
+        fontSize: '1rem',
+        ['@media (max-width:600px)']: { 
+            width: 'calc(100% - 10px)',
+        }
     },
     img:{
-        width: 100,
-        height: 100,
+        width: '100px',
+        height: '100px',
         borderRadius: 5,
         // margin: 5
+
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+            height: '200px',
+        }
     },
     ul:{
         backgroundColor: 'blue',
@@ -40,8 +51,11 @@ const useStyles =  makeStyles((theme) => ({
     },
     span:{
         border: '1px solid black',
-        maxWidth: '5%',
-        textAlign: 'center'
+        width: '64px',
+        textAlign: 'center',
+        marginLeft: '20px',
+        marginRight: '20px',
+        borderRadius: '10px',
     },
     btn:{
         border:'1px solid black'
@@ -52,77 +66,153 @@ const useStyles =  makeStyles((theme) => ({
         alignItems:'flex-start',
         lineHeight: 0.1,
         margin: 5,
-        // justifyContent: 'flex-end',
-        backgroundColor: 'green',
-        width:'20%',
-        marginLeft: '-10%'
+        width:'150px',
     },
     plusMinusQuant:{
         display:'flex',
-        alignItems: 'cemter',
+        alignItems: 'center',
         justifyContent: 'center'
-    }
-
+    },
+    productHeader: {
+        width: '100%',
+        background: '#b7b7b7',
+        color: 'white',
+        ['@media (max-width:600px)']: { 
+            display: 'none',
+        }
+    },
+    productBody: {
+        width: '100%',
+        display: 'inline-flex',
+        ['@media (max-width:600px)']: { 
+            flexDirection: 'column',
+        },
+    },
+    header1: {
+        width: '40%',
+        textAlign: 'left',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+        }
+    },
+    header2: {
+        width: '10%',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+        }
+    },
+    header3: {
+        width: '10%',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+        }
+    },
+    header4: {
+        width: '25%',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+        }
+    },
+    header5: {
+        width: '15%',
+        ['@media (max-width:600px)']: { 
+            width: '100%',
+        }
+    },
+    topPadding: {
+        paddingTop: '30px',
+        ['@media (max-width:600px)']: { 
+            paddingTop: '5px',
+        }
+    },
 }))
 
 
-function OrderSummery() {
+function OrderSummery({state, dispatchToStore}) {
+
     const classes = useStyles();
-    const items = [
-        {
-            title: 'Runtz',
-            price: '$35.00',
-            weight: '1/8 oz'
-        },
-        {
-            title: 'Bluberry Muffin',
-            price: '$35.00',
-            weight: '1/8 oz'
-        }
-    ];
-    const [quantity, setQuantity] = React.useState(1);
 
-    function addProduct(){
-        setQuantity(quantity + 1);
-    }
+    const items = [...state.cartReducer.myCart];
 
-    function minusProduct(){
-        if(quantity == 0){
-            return
-        }else{
-            setQuantity(quantity - 1)
+    const floatingFormat = (n)=>{
+        let src = String(n);
+        let p = src.indexOf('.');
+        if (p == -1) src = src + ".";
+        p = src.indexOf('.');
+        while (src.length - p < 3) {
+            src = src + "0";
         }
-      
+        return src;
     }
 
     return (
         <div>
             {/* Map items array */}
             {items.map((item, i) => (
-                <Card className={classes.root}>
-                    <div className={classes.imgTitleContainer}>
-                        <h4>{item.title}</h4>
-                        <img className={classes.img} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdjlRchp1AtOYBSGq8Cxb26rSFPyMh4UB00A&usqp=CAU"/>
-                    </div>
-                    <div className={classes.quantitySect}>
-                        
-                            <p>{item.weight}</p>
-                            <p>{item.price}</p>
-                
-                        <div className={classes.plusMinusQuant}>
-                            <IconButton size='small' className={classes.btn} variant="outlined" onClick={minusProduct}>
-                                <RemoveIcon/>
-                            </IconButton>
-                            <Container className={classes.span}><p>{quantity}</p></Container>
-                            <IconButton size='small' className={classes.btn} variant="outlined" onClick={addProduct}>
-                                <AddIcon/>
-                            </IconButton>
+                <Card className={classes.root} key={i}>
+                    {i == 0? (
+                        <table className={classes.productHeader}> 
+                            <th className={classes.header1}>items</th>
+                            <th className={classes.header2}>weight</th>
+                            <th className={classes.header3}>price</th>
+                            <th className={classes.header4}>quantity</th>
+                            <th className={classes.header5}>sub total</th>
+                        </table>
+                    ):(<></>)}
+                    <div className={classes.productBody}> 
+                        <div className={classes.header1}>
+                            <div className={classes.imgTitleContainer}>
+                                <h4>{item.title}</h4>
+                                <img className={classes.img} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdjlRchp1AtOYBSGq8Cxb26rSFPyMh4UB00A&usqp=CAU"/>
+                            </div>
+                        </div>
+                        <div className = {classes.header2 + ' ' + classes.topPadding}> 
+                            <p>{item.weight}</p> 
+                        </div>
+                        <div className={classes.header3 + ' ' +  classes.topPadding}>
+                            <p>${floatingFormat(item.price)}</p>
+                        </div>
+                        <div className={classes.header4 + ' ' +  classes.topPadding}>
+                            <div className={classes.plusMinusQuant}>
+                                <IconButton size='small' className={classes.btn} variant="outlined" onClick={()=>dispatchToStore('-', item)}>
+                                    <RemoveIcon/>
+                                </IconButton>
+                                <Container className={classes.span}><p>{item.countOf}</p></Container>
+                                <IconButton size='small' className={classes.btn} variant="outlined" onClick={()=>dispatchToStore('+', item)}>
+                                    <AddIcon/>
+                                </IconButton>
+                            </div>
+                        </div>
+                        <div className={classes.header5 + ' ' +  classes.topPadding}>
+                            <p> ${floatingFormat(item.price * item.countOf)}</p>
                         </div>
                     </div>
                 </Card>
             ))}
+
         </div>
     )
 }
 
-export default OrderSummery
+const mapStateToProps = state => {
+    return { state };
+};
+
+const dispatchToStore = (type, selectedProduct) => {
+    switch (type) {
+        case '+': {
+            return {
+                type: 'ADD_ONE',
+                selectedProduct: selectedProduct
+            }
+        }
+        case '-': {
+            return {
+                type: 'MINUS_ONE',
+                selectedProduct: selectedProduct
+            }
+        }
+    }
+}
+
+export default connect(mapStateToProps, {dispatchToStore})(OrderSummery);

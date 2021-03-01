@@ -32,10 +32,21 @@ const useStyles = makeStyles((theme) => ({
         // marginTop: '-8.8%'
         // display: 'flex',
         // flexDirection: 'column'
+
+        ['@media (max-width:600px)']: { 
+            marginTop: '100px',
+            width: '100%',
+        }
     },
     rightContainer:{
         width: '31%',
 
+        ['@media (max-width:600px)']: { 
+            position: 'fixed',
+            left: '0px',
+            top: '50px',
+            width: '100%',
+        }
         // backgroundColor: 'blue'
         
     }
