@@ -131,8 +131,10 @@ const useStyles =  makeStyles((theme) => ({
 function OrderSummery({state, dispatchToStore}) {
 
     const classes = useStyles();
-
-    const items = [...state.cartReducer.myCart];
+console.log(state);
+    const items = state.myCart!=null?[...state.myCart]:[];
+    
+    ;
 
     const floatingFormat = (n)=>{
         let src = String(n);
