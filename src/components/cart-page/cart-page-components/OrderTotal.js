@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
 
 function OrderTotal({state}) {
     const classes = useStyles();
-    const products = [...state.cartReducer.myCart];
+    const products = state.myCart!=null?[...state.myCart]:[];
 
     let calc = () => {
         return products.reduce((sum, item)=>(sum + item.countOf * item.price), 0);
