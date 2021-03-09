@@ -130,8 +130,8 @@ const useStyles =  makeStyles((theme) => ({
 
 function OrderSummery({state, dispatchToStore}) {
 
-    const classes = useStyles();
-console.log(state);
+    const classes = useStyles();console.log(state);
+
     const items = state.myCart!=null?[...state.myCart]:[];
     
     ;
@@ -197,7 +197,7 @@ console.log(state);
 }
 
 const mapStateToProps = state => {
-    return { state };
+    return { state: state.cartReducer };
 };
 
 const dispatchToStore = (type, selectedProduct) => {

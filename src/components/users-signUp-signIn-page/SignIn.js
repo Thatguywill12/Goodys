@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import ajaxUrl from '../../config/ajaxUrl';
 
 
-function SignIn() {
+function SignIn({dispatchToStore}) {
     //Sets use state for User
     const [username, setUsername] = useState("");
     //Sets use state for Email
@@ -34,6 +35,7 @@ function SignIn() {
         fetch(`${ajaxUrl}/sign_in?username=${username}&password=${password}&email=${email}`, options).then(res=>res.json().then(data=>{
             console.log(data);
             if(data['sign_in']){
+                dispatchToStore('sign_in', {username, password, email});
                 history.push('/');
             } else {
                 alert('Username or password is incorrect.');
@@ -55,6 +57,7 @@ function SignIn() {
         fetch(`${ajaxUrl}/sign_up?username=${username}&password=${password}&email=${email}`, options).then(res=>res.json().then(data=>{
             console.log(data);
             if(data['sign_up']){
+                dispatchToStore('sign_in', {username, password, email});
                 history.push('/');
             }
         }));
@@ -82,4 +85,14 @@ function SignIn() {
     )
 }
 
-export default SignIn
+const dispatchToStore = (type, signedUser) => {
+    if (type == 'sign_in' ) {
+        return {
+            type: 'SIGN_IN',
+            signedUser: signedUser
+        }
+    }
+    return {};
+}
+
+export default connect(null, {dispatchToStore})(SignIn);
