@@ -14,6 +14,16 @@ const useStyles = makeStyles((theme) => ({
         height: '100px !important',
         top: 'calc(50vh - 50px)',
         left: 'calc(50vw - 50px)',
+    },
+    mask: {
+        position: 'fixed', 
+        width: '100vw', 
+        height: '100vh', 
+        left: 0, 
+        top: 0, 
+        opacity: 0.8, 
+        background:'black', 
+        zIndex:2
     }
 }));
 
@@ -85,9 +95,13 @@ function SignIn({dispatchToStore}) {
     
     return (
         <div>
+            
             {signProcess?(
-                <CircularProgress className={classes.spin} />
-            ):(
+                <div className={classes.mask}>
+                    <CircularProgress className={classes.spin} />
+                </div>
+            ):''}
+
                 <Login
                     username={username}
                     setUsername={setUsername}
@@ -103,7 +117,7 @@ function SignIn({dispatchToStore}) {
                     handleSignup={handleSignup}
                     setConfirmPassword={setConfirmPassword}
                 />
-            )}
+            
         </div>
     )
 }
