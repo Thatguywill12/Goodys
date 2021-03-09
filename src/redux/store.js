@@ -2,11 +2,10 @@ import { createStore, applyMiddleware } from 'redux'
 import { combineReducers } from "redux";
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { persistStore, persistReducer } from 'redux-persist' // imports from redux-persist
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import { persistStore, persistReducer } from 'redux-persist' 
+import storage from 'redux-persist/lib/storage' 
 
-const persistConfig = { // configuration object for redux-persist
+const persistConfig = { 
     key: 'root',
     storage: storage,
 }
@@ -93,19 +92,14 @@ let userReducer = (state = initialState, action) => {
     }
 }
 
-const persistedReducer = persistReducer(persistConfig, combineReducers({cartReducer, userReducer})) // create a persisted reducer
+const persistedReducer = persistReducer(persistConfig, combineReducers({cartReducer, userReducer})) 
 
 const store = createStore(
     persistedReducer, {},
-    applyMiddleware(thunk, logger) // add any middlewares here
+    applyMiddleware(thunk, logger) 
 )
 
-const  persistor = persistStore(store); // used to create the persisted store, persistor will be used in the next step
+const  persistor = persistStore(store); 
 
 export { store, persistor }
-
-// const store = createStore(cartReducer);
-
-// export { store }
-
 
