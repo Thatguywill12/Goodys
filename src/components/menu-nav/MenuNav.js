@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -139,7 +140,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
         [theme.breakpoints.up('md')]: {
             display: 'flex',
+            alignItems: 'center',
         },
+    },
+    signLink: {
+        textDecoration: 'none',
     },
     shopCart: {
         width: '30px',
@@ -207,11 +212,17 @@ const useStyles = makeStyles((theme) => ({
             borderBottom: 'solid thin gray',
             width: '80%',
         }
+    },
+    mobileOnly: {
+        display: 'none',
+        [theme.breakpoints.down('sm')]: {
+            display: 'initial',
+        }
     }
-
 }));
 
-function  MenuNav() {
+function  MenuNav({ state, signOut }) {
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -221,9 +232,13 @@ function  MenuNav() {
     
     const [mainMenuOpen, setMainMenuOpen] = React.useState(false);
 
-    const handleProfileMenuOpen = (event) => {
+    const handleSignMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    const handleProfileMenuOpen = (event) => {
+
+    }
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -249,12 +264,33 @@ function  MenuNav() {
         open={isMenuOpen}
         onClose={handleMenuClose}
         >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        
+        <MenuItem onClick={handleMenuClose}><Link className={classes.signLink} to='/sign-in'>Sign In</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link className={classes.signLink} onClick= {signOut}>Sign Out</Link></MenuItem>
         </Menu>
     );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
+
+    const profileMenu = (
+        <MenuItem onClick={handleProfileMenuOpen}>
+            <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+            >
+            <AccountCircle />
+            </IconButton>
+            <p className={classes.mobileOnly}>Profile</p>
+        </MenuItem>
+    );
+    const signMenu = (
+        <MenuItem onClick={handleSignMenuOpen} style={{display: 'flex', justifyContent: 'center'}}>
+            
+            <p>Sign In / Out</p>
+        </MenuItem>
+    );
     const renderMobileMenu = (
         <Menu
         anchorEl={mobileMoreAnchorEl}
@@ -281,17 +317,8 @@ function  MenuNav() {
                 </IconButton>
                 <p>Notifications</p>
             </MenuItem>
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-                >
-                <AccountCircle />
-                </IconButton>
-                <p>Profile</p>
-            </MenuItem>
+            { state.signedUser.username?profileMenu:'' }
+            { signMenu }
         </Menu>
     );
 
@@ -314,8 +341,8 @@ function  MenuNav() {
     const mainMenu = (
         <div className={mainMenuOpen?classes.showMainMenu:classes.hideMainMenu}>
         {
-            menuLinks.map(({menuHref, caption}) => (
-                <MenuItem onClick={handleMenuClose} className={classes.mainMenuItem}>
+            menuLinks.map(({menuHref, caption}, i) => (
+                <MenuItem onClick={handleMenuClose} className={classes.mainMenuItem} key={i}>
                     <Link to={menuHref} style={{textDecoration: 'none', color:'black'}}>
                         {caption}
                     </Link>
@@ -328,83 +355,74 @@ function  MenuNav() {
     return (
       <div className={classes.grow}>
         <AppBar position="static" className={classes.root}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="open drawer"
-              onClick={()=>{setMainMenuOpen(!mainMenuOpen)}}
-            >
-              {mainMainHolder}
-            </IconButton>
-            
-            <div className={classes.addressSearch}>
-              <div className={classes.searchIcon}>
-                <RoomIcon />
-              </div>
-              <InputBase
-                placeholder="Address"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'Address' }}
-              />
-            </div>
-            <div className={classes.filter}>
-              Pick up 
-            </div>
-            <div className={classes.grow} />
-            <Typography className={classes.title} variant="h6" noWrap>
-              Goodys
-            </Typography>
-            <div className={classes.grow} />
-            <div className={classes.keywordSearch}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              {/* <IconButton aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton> */}
-              <Link to='/sign-in'>
-                <Button aria-label="show 17 new notifications" size='small' variant="outlined" color="inherit" style={{height:'30px'}}>
-                    <h6>Sign In</h6>
-                </Button>
-              </Link>
-
-              <Link to='/cart' style={{textDecoration: 'none', justifyContent: 'center', display: 'flex', }}>
-                <Button>
-                    <img className={classes.shopCart}src='assets/img/shopping-cart.png' />
-                    <input value="0" className={classes.shoppingCount} disabled='disabled'/>
-                </Button>
-              </Link>
-            </div>
-            <div className={classes.sectionMobile}>
-              <IconButton
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </div>
-          </Toolbar>
+            <Toolbar>
+                <IconButton
+                    edge="start"
+                    className={classes.menuButton}
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={()=>{setMainMenuOpen(!mainMenuOpen)}}
+                    >
+                    {mainMainHolder}
+                </IconButton>
+                
+                <div className={classes.addressSearch}>
+                    <div className={classes.searchIcon}>
+                        <RoomIcon />
+                    </div>
+                    <InputBase
+                        placeholder="Address"
+                        classes={{
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
+                        }}
+                        inputProps={{ 'aria-label': 'Address' }}
+                    />
+                </div>
+                <div className={classes.filter}>
+                Pick up 
+                </div>
+                <div className={classes.grow} />
+                <Typography className={classes.title} variant="h6" noWrap>
+                Goodys
+                </Typography>
+                <div className={classes.grow} />
+                <div className={classes.keywordSearch}>
+                    <div className={classes.searchIcon}>
+                        <SearchIcon />
+                    </div>
+                    <InputBase
+                        placeholder="Search…"
+                        classes={{
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
+                        }}
+                        inputProps={{ 'aria-label': 'search' }}
+                    />
+                </div>
+                <div className={classes.grow} />
+                <div className={classes.sectionDesktop}>
+                    { signMenu }
+                    { state.signedUser.username?profileMenu:'' }
+                    <Link to='/cart' style={{textDecoration: 'none', justifyContent: 'center', display: 'flex', }}>
+                        <Button>
+                            <img className={classes.shopCart}src='assets/img/shopping-cart.png' />
+                            <input value="0" className={classes.shoppingCount} disabled='disabled'/>
+                        </Button>
+                    </Link>
+                </div>
+                <div className={classes.sectionMobile}>
+                    <IconButton
+                        aria-label="show more"
+                        aria-controls={mobileMenuId}
+                        aria-haspopup="true"
+                        onClick={handleMobileMenuOpen}
+                        color="inherit"
+                    >
+                    <MoreIcon />
+                </IconButton>
+                </div>
+            </Toolbar>
         </AppBar>
         {renderMobileMenu}
         {renderMenu}
@@ -413,5 +431,16 @@ function  MenuNav() {
     )
 }
 
-export default MenuNav;
+const mapStateToProps = state => {
+    console.log(state);
+    return { state: state.userReducer };
+};
+
+const signOut = () => {
+    return {
+        type : 'LOG_OUT',
+    }
+}
+
+export default connect(mapStateToProps, {signOut})(MenuNav);
 

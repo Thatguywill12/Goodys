@@ -84,7 +84,7 @@ let userReducer = (state = initialState, action) => {
         case 'LOG_OUT': {
             return {
                 ...state,
-                signedUser: null,
+                signedUser: {},
             }
         }
         default:
