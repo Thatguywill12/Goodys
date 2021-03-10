@@ -139,7 +139,7 @@ function OrderTotal({state}) {
 }
 
 const mapStateToProps = state => {
-    return { state }
+    return { state: state.cartReducer };
 }
 
 export default connect(mapStateToProps)(OrderTotal)
